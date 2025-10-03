@@ -1,1 +1,2 @@
-# Competitive_Programming
+# Competitive Programming
+C++ competitive programming
