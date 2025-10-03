@@ -23,10 +23,12 @@
 
           SOURCE_FILE="$1"
           OUTPUT_NAME=$(basename "$SOURCE_FILE" .cpp)
+          BUILD_DIR="build"
             
-          ${pkgs.gcc}/bin/g++ -std=c++20 -O2 -Wall -Wextra -fsanitize=address,undefined -o "$OUTPUT_NAME" "$SOURCE_FILE"
+          mkdir -p "$BUILD_DIR"
+          ${pkgs.gcc}/bin/g++ -std=c++20 -O2 -Wall -Wextra -fsanitize=address,undefined -o "$BUILD_DIR/$OUTPUT_NAME" "$SOURCE_FILE"
 
-          ./"$OUTPUT_NAME"
+          ./"$BUILD_DIR/$OUTPUT_NAME"
         '';
       in {
         default = pkgs.mkShell.override
